@@ -77,7 +77,7 @@ def fetchBatsman(url2, team2,format):
 
 # print(newData)
 
-    with open('data.csv','w',encoding='utf-8') as f:
+    with open('batting.csv','w',encoding='utf-8') as f:
         writer=csv.writer(f)
         writer.writerows(newData)
         print("data written..")
