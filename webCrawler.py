@@ -3,9 +3,9 @@ from bs4 import BeautifulSoup
 import csv
     
 
-# url ="https://www.espncricinfo.com/series/australia-vs-india-2024-25-1426547/india-2nd-3rd-4th-and-5th-test-squad-1460697/series-squads"
+url ="https://www.espncricinfo.com/series/australia-vs-india-2024-25-1426547/india-2nd-3rd-4th-and-5th-test-squad-1460697/series-squads"
 # url ="https://www.espncricinfo.com/series/australia-vs-india-2024-25-1426547/australia-2nd-test-squad-1461795/series-squads"
-url="https://www.espncricinfo.com/series/south-africa-vs-pakistan-2024-25-1432205/south-africa-odi-squad-1464701/series-squads"
+# url="https://www.espncricinfo.com/series/south-africa-vs-pakistan-2024-25-1432205/south-africa-odi-squad-1464701/series-squads"
 url2="https://www.espncricinfo.com"
 # +"/cricketers/rohit-sharma-34102"
 
