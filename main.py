@@ -13,6 +13,4 @@ def guessWhat():
     for i in range(len(team)):
         print(i+1,team[i])
     
-    
-
 guessWhat()

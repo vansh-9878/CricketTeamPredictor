@@ -7,7 +7,10 @@ from sklearn.exceptions import InconsistentVersionWarning
 
 def findBatsmen(n):
     df=pd.read_csv('batting.csv')
-    df['HS']=df['HS'].str.split('*').str[0]
+    try:
+        df['HS']=df['HS'].str.split('*').str[0]
+    except:
+        a=1
     weights={'Matches':0.2,'Average': 0.2,'HS':0.1,'NO':0.2,'100s':0.2,'50s':0.1}
     scaler=MinMaxScaler()
     normalized_data = scaler.fit_transform(df[['Matches','Average', 'HS','NO','100s','50s']])
@@ -45,8 +48,8 @@ def findBowler(n):
     
 def findAllrounder(n):
     df=pd.read_csv('allRounder.csv')
-    df['HS']=df['HS'].str.split('*').str[0]
     try:
+        df['HS']=df['HS'].str.split('*').str[0]
         df['Wickets']=df['Wickets'].str.split('*').str[0]
     except:
         a=0
@@ -91,7 +94,8 @@ def predictTeam(venue,team1):
         'south':'RSA',
         'pakistan':'PAK',
         'england':'ENG',
-        'sri':'SL'
+        'sri':'SL',
+        'new':'NZ'
     }
     # print(code[venue],code[team1])
     # exit(0)
