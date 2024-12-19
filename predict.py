@@ -82,8 +82,20 @@ def makeTeam(n1,n2,n3):
 
 
 
-def predictTeam():
-    new_match = pd.DataFrame({'Venue': ['AUS'], 'Team': ['IND']})
+def predictTeam(venue,team1):
+    code={
+        'australia':'AUS',
+        'india':'IND',
+        'west':'WI',
+        'bangladesh':'BAN',
+        'south':'RSA',
+        'pakistan':'PAK',
+        'england':'ENG',
+        'sri':'SL'
+    }
+    # print(code[venue],code[team1])
+    # exit(0)
+    new_match = pd.DataFrame({'Venue': [code[venue]], 'Team': [code[team1]]})
     df=pd.read_csv('teamData.csv')
     X=df[['Team','Venue']]
     X=pd.get_dummies(X)
@@ -96,4 +108,3 @@ def predictTeam():
     team=makeTeam(predictions[0][0],predictions[0][1],predictions[0][2])
     return team
 
-predictTeam()
