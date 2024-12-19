@@ -3,35 +3,6 @@ from bs4 import BeautifulSoup
 import csv
     
 
-url ="https://www.espncricinfo.com/series/australia-vs-india-2024-25-1426547/india-2nd-3rd-4th-and-5th-test-squad-1460697/series-squads"
-# url ="https://www.espncricinfo.com/series/australia-vs-india-2024-25-1426547/australia-2nd-test-squad-1461795/series-squads"
-# url="https://www.espncricinfo.com/series/south-africa-vs-pakistan-2024-25-1432205/south-africa-odi-squad-1464701/series-squads"
-url2="https://www.espncricinfo.com"
-# +"/cricketers/rohit-sharma-34102"
-
-#format -> Tests=1, ODIs=2, T20Is=3
-
-format=-1
-url3=url.split("-")
-if "tests" in url3 or "test" in url3:
-    format=1
-elif "ODIs" in url3 or "odi" in url3:
-    format=2
-elif "t20i" in url3 or "T20I" in url3:
-    format=3
-
-if format==-1:
-    print("Error Encountered!!!")
-    exit(0) 
-
-# print(format)
-
-response = requests.get(url)
-soup = BeautifulSoup(response.content, "html.parser")
-team = soup.find_all('div',class_='ds-p-0')
-# print(reviews[0])
-team2=team[1].find_all('div',recursive=False)
-# print(team[4])
 
 def fetchBatsman(url2, team2,format):
     newData=[["Player","Matches","Innings","NO","Runs","HS","Average","BF","Sr","100s","50s","4s","6s","Ct","St"]]
@@ -80,7 +51,7 @@ def fetchBatsman(url2, team2,format):
     with open('batting.csv','w',encoding='utf-8') as f:
         writer=csv.writer(f)
         writer.writerows(newData)
-        print("data written..")
+        print("Batter's Data received!!")
 
 
 
@@ -129,7 +100,7 @@ def fetchBowler(url2, team2,format):
     with open('bowling.csv','w',encoding='utf-8') as f:
         writer=csv.writer(f)
         writer.writerows(newData)
-        print("data written")    
+        print("Bowler's Data received!!")    
     
     
     
@@ -215,11 +186,43 @@ def fetchAllRounder(url2, team2,format):
     with open('allRounder.csv','w',encoding='utf-8') as f:
         writer=csv.writer(f)
         writer.writerows(newData)
-        print("data written..")
+        print("AllRounder's Data received!!")
 
 
-fetchBatsman(url2,team2,format)
-fetchAllRounder(url2,team2,format)
-fetchBowler(url2,team2,format)
+def start(url):
+    # url ="https://www.espncricinfo.com/series/australia-vs-india-2024-25-1426547/india-2nd-3rd-4th-and-5th-test-squad-1460697/series-squads"
+# url ="https://www.espncricinfo.com/series/australia-vs-india-2024-25-1426547/australia-2nd-test-squad-1461795/series-squads"
+# url="https://www.espncricinfo.com/series/south-africa-vs-pakistan-2024-25-1432205/south-africa-odi-squad-1464701/series-squads"
+    url2="https://www.espncricinfo.com"
+# +"/cricketers/rohit-sharma-34102"
+
+#format -> Tests=1, ODIs=2, T20Is=3
+
+    format=-1
+    url3=url.split("-")
+    if "tests" in url3 or "test" in url3:
+        format=1
+    elif "ODIs" in url3 or "odi" in url3:
+        format=2
+    elif "t20i" in url3 or "T20I" in url3:
+        format=3
+
+    if format==-1:
+        print("Error Encountered!!!")
+        exit(0) 
+
+# print(format)
+
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, "html.parser")
+    team = soup.find_all('div',class_='ds-p-0')
+# print(reviews[0])
+    team2=team[1].find_all('div',recursive=False)
+# print(team[4])
+    fetchBatsman(url2,team2,format)
+    fetchAllRounder(url2,team2,format)
+    fetchBowler(url2,team2,format)
+
+# start(fetchBatsman, fetchBowler, fetchAllRounder)
 
 
