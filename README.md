@@ -81,7 +81,7 @@ CricketTeamPredictor is a Python-based project designed to predict the playing X
 ---
 
 ## License
-This project is licensed under the GNU License. See the LICENSE file for details.
+This project is licensed under the GPL License. See the LICENSE file for details.
 
 ---
 
